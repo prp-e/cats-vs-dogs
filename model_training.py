@@ -20,3 +20,7 @@ model.add(Flatten())
 model.add(Dense(128, input_shape = features[1:], activation='relu'))
 
 model.add(Dense(2, activation='softmax'))
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
+
+model.fit(features, labels, epochs=10, validation_split=0.1)
