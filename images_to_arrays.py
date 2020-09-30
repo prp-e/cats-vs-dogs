@@ -20,7 +20,7 @@ for category in CATEGORIES:
         image_arr = cv2.resize(image_arr, (IMAGE_SIZE, IMAGE_SIZE))
         data.append([image_arr, label])
 
-data = random.shuffle(data)
+random.shuffle(data)
 x = []
 y = []
 
@@ -29,3 +29,11 @@ for features, labels in data:
     y.append(labels)
 
 print("Pre-process is done successfully.")
+
+x = np.array(x)
+y = np.array(y)
+
+pickle.dump(x, open('features.pkl', 'wb'))
+pickle.dump(y, open('labels.pkl', 'wb'))
+
+print("Saved to files!")
