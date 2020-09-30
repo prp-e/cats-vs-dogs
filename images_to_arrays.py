@@ -15,7 +15,17 @@ for category in CATEGORIES:
     label = CATEGORIES.index(category)
     for image in os.listdir(folder):
         image_path = os.path.join(folder, image)
+        print(f'Working on {image_path}')
         image_arr = cv2.imread(image_path)
         image_arr = cv2.resize(image_arr, (IMAGE_SIZE, IMAGE_SIZE))
         data.append([image_arr, label])
 
+data = random.shuffle(data)
+x = []
+y = []
+
+for features, labels in data: 
+    x.append(features)
+    y.append(labels)
+
+print("Pre-process is done successfully.")
