@@ -5,8 +5,8 @@ import pickle
 features = pickle.load(open('features.pkl', 'rb')) 
 labels = pickle.load(open('labels.pkl', 'rb'))
 
-features = features / 255 # to simplify the stuff
 features = features.reshape(-1, 250, 250, 1)
+#features = features / 255
 
 model = Sequential()
 
@@ -22,6 +22,6 @@ model.add(Dense(128, input_shape = features[1:], activation='relu'))
 
 model.add(Dense(2, activation='softmax'))
 
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 model.fit(features, labels, epochs=10, validation_split=0.1)
