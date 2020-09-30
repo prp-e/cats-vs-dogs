@@ -6,6 +6,7 @@ features = pickle.load(open('features.pkl', 'rb'))
 labels = pickle.load(open('labels.pkl', 'rb'))
 
 features = features / 255 # to simplify the stuff
+features = features.reshape(-1, 250, 250, 1)
 
 model = Sequential()
 
